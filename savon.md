@@ -9,8 +9,6 @@ author: afun
 
 %css
 
-
-
 %end
 
 %%%%%%%%%%%%%%%%%%%
@@ -29,7 +27,6 @@ author: afun
 
 %%%%%%%%%%%%%%%%%%%
 %% Here we go...
-
 %%%%%%%%%%%%%%% step-1
 !SLIDE x=-1000 y=-1600 scale=1
 
@@ -169,7 +166,7 @@ Person savon = new Person();
 #### **想看的人** 都看的到XDDD
 
 %%%%%%%%%%%%%%%
-!SLIDE unclickable showOnlyWhenPresent x=15000 y=12050 scale=5
+!SLIDE x=15000 y=12050 scale=5
 
 #### 話說如果要下載這個網頁檔的話
 
