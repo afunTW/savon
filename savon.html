@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1024">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>給 savon 的生日禮物, 也是花了我不少時間阿阿阿阿阿 | by afun</title>
+
+    <meta name="generator" content="Slide Show (S9)">
+    <meta name="author" content="afun">
+
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <style>
+        h1,h2,h3,h4,h5,h6{
+            text-align: center;
+        }
+
+        /*loading style, title and author*/
+        div#loading{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            transition: opacity 1s;
+
+            background: rgb(21, 21, 21);
+        }
+        div#loading h1{
+            margin: 0;
+            padding-top: 80px;
+            padding-bottom: 20px;
+
+            background: rgb(53, 53, 53);
+            border-bottom: #8ADFFF solid 3px;
+            color: rgb(152, 255, 189);
+        }
+        div#loading h3{
+            margin: 0;
+            padding-top: 20px;
+            padding-bottom: 20px;
+
+            background: rgb(72, 84, 66);
+            color: rgba(255, 179, 94, 1);
+        }
+        div#loading.done{
+            opacity:0;
+        }
+
+        div#loading .spinner {
+            -webkit-animation: rotation 1.4s linear infinite;
+            animation: rotation 1.4s linear infinite;
+            stroke: rgba(0, 149, 207, 1);
+            margin-left: auto;
+            display: block;
+            margin-right: auto;
+            margin-top: 10%;
+        }
+        @-webkit-keyframes rotation {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(270deg);
+                transform: rotate(270deg);
+            }
+        }
+        @keyframes rotation {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(270deg);
+                transform: rotate(270deg);
+            }
+        }
+        div#loading .spinner .circle {
+            stroke-dasharray: 187;
+            stroke-dashoffset: 0;
+            -webkit-transform-origin: center;
+            -ms-transform-origin: center;
+            transform-origin: center;
+            -webkit-animation: turn 1.4s ease-in-out infinite;
+            animation: turn 1.4s ease-in-out infinite;
+        }
+        @-webkit-keyframes turn {
+            0% {
+                stroke-dashoffset: 187;
+            }
+            50% {
+                stroke-dashoffset: 46.75;
+                -webkit-transform: rotate(135deg);
+                transform: rotate(135deg);
+            }
+            100% {
+                stroke-dashoffset: 187;
+                -webkit-transform: rotate(450deg);
+                transform: rotate(450deg);
+            }
+        }
+        @keyframes turn {
+            0% {
+                stroke-dashoffset: 187;
+            }
+            50% {
+                stroke-dashoffset: 46.75;
+                -webkit-transform: rotate(135deg);
+                transform: rotate(135deg);
+            }
+            100% {
+                stroke-dashoffset: 187;
+                -webkit-transform: rotate(450deg);
+                transform: rotate(450deg);
+            }
+        }
+
+        /*the background*/
+        body {
+            background: #545454; /* Old browsers */
+            background: -moz-radial-gradient(center, ellipse cover,  #545454 0%, #262626 100%); /* FF3.6+ */
+            background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#545454), color-stop(100%,#262626)); /* Chrome,Safari4+ */
+            background: -webkit-radial-gradient(center, ellipse cover,  #545454 0%,#262626 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-radial-gradient(center, ellipse cover,  #545454 0%,#262626 100%); /* Opera 12+ */
+            background: -ms-radial-gradient(center, ellipse cover,  #545454 0%,#262626 100%); /* IE10+ */
+            background: radial-gradient(ellipse at center,  #545454 0%,#262626 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#545454', endColorstr='#262626',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /*normal step*/
+        .step {
+          color:rgb(152, 255, 189);
+          width: 1024px;
+          height: 576px;
+          padding: 40px 60px;
+
+          font-size: 32px;
+
+          opacity: 0.9;
+          line-height: 1.6;
+
+          transition: all 0.5s ease 0s;
+        }
+
+        .step.future {
+          opacity: 0;
+          pointer-events:none;
+        }
+
+        .step.active {
+          opacity: 1;
+          text-shadow: 0px 0px 20px black;
+        }
+
+        .step.present {
+            z-index: 100;
+        }
+
+        /*markdown elements*/
+        h2{
+            margin-top: 20%;
+            margin-bottom: 10px;
+        }
+
+        h4{
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        pre {
+            background-color: rgba(56, 186, 112, 1);
+            padding: 15px;
+            overflow: auto;
+        }
+
+        code {
+            background-color: rgba(56, 186, 112, 0.82);
+            color: #D1CABC;
+            border-radius: 10px;
+            padding: 7px;
+            font-family: "Consolas","Montserrat",sans-serif;
+        }
+
+        blockquote {
+            margin: 0px;
+            padding-left: 40px;
+            border-left: 10px solid #000;
+            color: rgba(105, 105, 105, 1)
+        }
+
+        blockquote blockquote{
+            border: none;
+        }
+
+        blockquote p{
+            margin: 0;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        ul {
+            padding-left: 1.75em;
+            margin: 0px 0px 20px;
+        }
+
+        a {
+            color: rgba(0, 149, 207, 1);
+        }
+
+        strong {
+            color: rgba(255, 179, 94, 1);
+        }
+
+        /*controls*/
+
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+        }
+
+        .arrow {
+            width: 0px;
+            height: 0px;
+            border: 30px solid rgba(153, 186, 213, 0.5);
+            float: left;
+            margin-right: 30px;
+            -moz-user-select: none;
+        }
+
+        .prev {
+            border-top-color: transparent;
+            border-bottom-color: transparent;
+            border-left-color: transparent;
+            border-left-width: 0px;
+            border-right-width: 50px;
+        }
+
+        .prev:hover {
+            border-right-color: rgba(194, 217, 225, 1);
+            cursor: pointer;
+        }
+
+        .next {
+            border-top-color: transparent;
+            border-bottom-color: transparent;
+            border-right-color: transparent;
+            border-left-width: 50px;
+            border-right-width: 0px;
+        }
+
+        .next:hover{
+            border-left-color: rgba(194, 217, 225, 1);
+            cursor: pointer;
+        }
+
+        /* customization options of steps*/
+
+        .slide {
+            background: #383838;
+            border: black solid 1px;
+            border-radius: 10px;
+            overflow: auto;
+        }
+        .slide.active {
+            box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 10px;
+        }
+
+        .step.unclickable {
+            pointer-events:none;
+        }
+
+        .step.center p {
+            text-align: center;
+        }
+
+        .step.showOnlyWhenPresent {
+            opacity: 0;
+            pointer-events:none;
+        }
+
+        .step.showOnlyWhenPresent.present {
+            opacity: 1;
+            pointer-events:default;
+        }
+
+        .step.picture img{
+            max-height: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .step.slogen h2{
+            margin-top: 15%;
+            font-size: 1.9em;
+        }
+
+        
+
+
+
+    </style>
+</head>
+
+<body class="impress-not-supported">
+
+<div id="impress">
+
+    <!-- note: assumes no header (breaking slides w/ SLIDE directive) -->
+
+    <div class='step ' data-x='-1000' data-y='-1600' data-scale='1' >
+      <!-- === begin markdown block ===
+
+      generated by markdown/1.2.0 on Ruby 1.9.3 (2013-11-22) [x86_64-linux]
+                on 2016-03-12 15:56:49 +0800 with Markdown engine kramdown (1.10.0)
+                  using options {}
+  -->
+
+<!-- _S9SLIDE_  x=-1000 y=-1600 scale=1 -->
+
+<h2 id="savon-bon-anniversaire"><strong>savon</strong>, Bon anniversaire</h2>
+
+
+    </div>
+
+    <div class='step ' data-x='-1000' data-y='-1600' data-z='-1000' data-rotate-y='90' >
+      <!-- _S9SLIDE_  x=-1000 y=-1600 z=-1000 rotate-y=90 -->
+
+<h2 id="section">前面那句是法文的生日快樂</h2>
+
+
+    </div>
+
+    <div class='step ' data-x='-1000' data-y='-1600' data-z='-2000' data-rotate-y='90' >
+      <!-- _S9SLIDE_  x=-1000 y=-1600 z=-2000 rotate-y=90 -->
+
+<h2 id="xdd">如果你相信的話XDD</h2>
+
+
+    </div>
+
+    <div class='step ' data-x='1400' data-y='-1600' >
+      <!-- _S9SLIDE_  x=1400 y=-1600 -->
+
+<h2 id="section-1">雖然我沒有從維也納帶回來的禮物</h2>
+
+
+    </div>
+
+    <div class='step ' data-x='1400' data-y='-1600' >
+      <!-- _S9SLIDE_  x=1400 y=-1600 -->
+
+<p> </p>
+
+<h2 id="section-2">也沒有甚麼感人的卡片可以給你</h2>
+
+
+    </div>
+
+    <div class='step ' data-x='1400' data-y='-1600' >
+      <!-- _S9SLIDE_  x=1400 y=-1600 -->
+
+<p> </p>
+
+<p> </p>
+
+<h2 id="section-3">但是 <strong>資工系有資工系的浪漫</strong>, 是吧</h2>
+
+
+    </div>
+
+    <div class='step ' data-x='1400' data-y='-1600' data-rotate-x='90' >
+      <!-- _S9SLIDE_  x=1400 y=-1600 rotate-x=90 -->
+
+<blockquote>
+  <h2 id="section-4">至少我覺得做一個這樣的網頁很酷 (?!)</h2>
+</blockquote>
+
+
+    </div>
+
+    <div class='step ' data-x='0' data-y='0' data-scale='4' >
+      <!-- _S9SLIDE_  x=0 y=0 scale=4 -->
+
+<h2 id="section-5">既然是你的生日, 我也只好少抱怨一些</h2>
+
+
+    </div>
+
+    <div class='step picture' data-x='0' data-y='2000' data-rotate='180' data-scale='4' >
+      <!-- _S9SLIDE_  picture x=0 y=2000 rotate=180 scale=4 -->
+
+<p><img src="./img/volleyballking.jpg" alt="king of volleyball" /></p>
+
+
+    </div>
+
+    <div class='step ' data-x='8400' data-y='2000' data-rotate='270' data-scale='10' >
+      <!-- _S9SLIDE_  x=8400 y=2000 rotate=270 scale=10 -->
+
+<h2 id="section-6">於是我就開始想: 你到底是怎樣的一個人?</h2>
+
+
+    </div>
+
+    <div class='step ' data-x='3000' data-y='2000' data-z='-3000' data-rotate-y='270' data-scale='1' >
+      <!-- _S9SLIDE_  x=3000 y=2000 z=-3000 rotate-y=270 scale=1 -->
+
+<ul>
+  <li><strong>董茲</strong>（？）
+    <ul>
+      <li>這個是甚麼我到現在還想不起來…</li>
+    </ul>
+  </li>
+</ul>
+
+
+    </div>
+
+    <div class='step ' data-x='3000' data-y='1900' data-z='-3000' data-rotate-y='270' data-scale='1' >
+      <!-- _S9SLIDE_  x=3000 y=1900 z=-3000 rotate-y=270 scale=1 -->
+
+<ul>
+  <li><strong>__ 的小綿羊</strong>
+    <ul>
+      <li>前面兩個字我暫時性失憶, 我也想不起來了…</li>
+    </ul>
+  </li>
+</ul>
+
+
+    </div>
+
+    <div class='step ' data-x='3000' data-y='1800' data-z='-3000' data-rotate-y='270' data-scale='1' >
+      <!-- _S9SLIDE_  x=3000 y=1800 z=-3000 rotate-y=270 scale=1 -->
+
+<ul>
+  <li><strong>vanvan</strong>
+    <ul>
+      <li>一個手工很強但是個性有點天然的人, 一堆正妹朋友</li>
+    </ul>
+  </li>
+</ul>
+
+
+    </div>
+
+    <div class='step ' data-x='3000' data-y='1700' data-z='-3000' data-rotate-y='270' data-scale='1' >
+      <!-- _S9SLIDE_  x=3000 y=1700 z=-3000 rotate-y=270 scale=1 -->
+
+<ul>
+  <li><strong>savon</strong>
+    <ul>
+      <li>一個常常在時裝秀的人, 然後表姊好像也蠻正的</li>
+    </ul>
+  </li>
+</ul>
+
+
+    </div>
+
+    <div class='step ' data-x='3000' data-y='1600' data-z='-3000' data-rotate-y='270' data-scale='1' >
+      <!-- _S9SLIDE_  x=3000 y=1600 z=-3000 rotate-y=270 scale=1 -->
+
+<ul>
+  <li><strong>資優生</strong>
+    <ul>
+      <li>都是被 meeting 課拉低成績的</li>
+    </ul>
+  </li>
+</ul>
+
+
+    </div>
+
+    <div class='step ' data-x='3000' data-y='1500' data-z='-3000' data-rotate-y='270' data-scale='1' >
+      <!-- _S9SLIDE_  x=3000 y=1500 z=-3000 rotate-y=270 scale=1 -->
+
+<ul>
+  <li>清大, 理科高材生, 長相也不錯, 又一堆正妹朋友</li>
+</ul>
+
+
+    </div>
+
+    <div class='step ' data-x='3000' data-y='1400' data-z='-3000' data-rotate-y='270' data-scale='1' >
+      <!-- _S9SLIDE_  x=3000 y=1400 z=-3000 rotate-y=270 scale=1 -->
+
+<p>…我能認識你真是榮幸</p>
+
+
+    </div>
+
+    <div class='step ' data-x='14400' data-y='2000' data-rotate='270' data-scale='6' >
+      <!-- _S9SLIDE_  x=14400 y=2000 rotate=270 scale=6 -->
+
+<h4 id="section-7">然後之前你問的一個問題, 當作禮物也回答一下好了</h4>
+
+<pre lang="c"><code>class Person{
+  Person(int IQ=0){
+    this.IQ = IQ;
+  }
+}
+</code></pre>
+
+<pre lang="c"><code>Person savon = new Person();
+
+// 這代表你宣告一個叫作 savon 的物件
+// 然後這個物件的型態是人
+</code></pre>
+
+
+    </div>
+
+    <div class='step ' data-x='6700' data-y='-2000' data-scale='6' >
+      <!-- _S9SLIDE_  x=6700 y=-2000 scale=6 -->
+
+<h2 id="section-8"><strong>總之, 感謝你還會聽我抱怨</strong></h2>
+
+
+    </div>
+
+    <div class='step ' data-x='6300' data-y='-4000' data-rotate='20' data-scale='4' >
+      <!-- _S9SLIDE_  x=6300 y=-4000 rotate=20 scale=4 -->
+
+<h2 id="section-9">雖然你只是叫我把台下的觀眾都想成西瓜</h2>
+
+
+    </div>
+
+    <div class='step ' data-x='7000' data-y='-5000' data-rotate='40' data-scale='2' >
+      <!-- _S9SLIDE_  x=7000 y=-5000 rotate=40 scale=2 -->
+
+<h2 id="section-10">雖然最後都變成你再抱怨某人, 不然就是你再說八卦</h2>
+
+<blockquote>
+  <p>我聽的也蠻開心的就是了…</p>
+</blockquote>
+
+
+    </div>
+
+    <div class='step ' data-x='7700' data-y='-6000' data-rotate='60' data-scale='2' >
+      <!-- _S9SLIDE_  x=7700 y=-6000 rotate=60 scale=2 -->
+
+<h2 id="section-11">最後…</h2>
+
+
+    </div>
+
+    <div class='step ' data-x='8200' data-y='-7000' data-z='-100' data-rotate='60' data-rotate-x='90' data-rotate-y='90' data-rotate-z='90' data-scale='2' >
+      <!-- _S9SLIDE_  x=8200 y=-7000 z=-100 rotate=60 rotate-x=90 rotate-y=90 rotate-z=90 scale=2 -->
+
+<h2 id="section-12">你有注意到網址嗎？</h2>
+
+<h4 id="savon--github">這個網頁名字就叫作 <code>savon</code>, 而且放在 <code>github</code>上</h4>
+
+<h4 id="xddd"><strong>想看的人</strong> 都看的到XDDD</h4>
+
+
+    </div>
+
+    <div class='step unclickable showOnlyWhenPresent' data-x='15000' data-y='12050' data-scale='5' >
+      <!-- _S9SLIDE_  unclickable showOnlyWhenPresent x=15000 y=12050 scale=5 -->
+
+<h4 id="section-13">話說如果要下載這個網頁檔的話</h4>
+
+<pre lang="sh"><code>// linux
+wget https://raw.githubusercontent.com/endlessproof/savon/master/savon.html
+
+// windows, 開瀏覽器去以下這個網址看
+https://github.com/endlessproof/savon/blob/master/savon.html
+</code></pre>
+
+<!-- === end markdown block === -->
+
+    </div>
+
+
+</div>
+
+<div id="loading">
+    <h1>給 savon 的生日禮物, 也是花了我不少時間阿阿阿阿阿</h1>
+    <h3>afun</h3>
+    <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="circle" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg>
+</div>
+
+<div class="controls">
+    <div class="arrow prev"></div>
+    <div class="arrow next"></div>
+</div>
+
+<script src="http://netdna.impressjscdn.com/impressjs/0.5.3/js/impress.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script>
+    var impressInstance;
+    $(document).ready(function(){
+        impressInstance = impress();
+        impressInstance.init();
+        /*impressInstance.prev_ori = impressInstance.prev;*/
+        impressInstance.next_ori = impressInstance.next;
+        impressInstance.next = function(){
+            impressInstance.next_ori();
+            $("div.step.active").removeClass("future");
+        };
+        $(".controls .arrow.prev").click(impressInstance.prev);
+        $(".controls .arrow.next").click(impressInstance.next);
+        if(window.location.hash)
+            $("div#impress div.step" + window.location.hash.replace("#/","#")).prevAll().removeClass("future");
+        setTimeout(function(){
+            $('div#loading').addClass('done');
+            setTimeout(function(){
+                $('div#loading').remove();
+
+            },1000);
+        },2000);
+    });
+</script>
+
+</body>
+</html>
