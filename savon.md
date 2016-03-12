@@ -166,7 +166,7 @@ Person savon = new Person();
 #### **想看的人** 都看的到XDDD
 
 %%%%%%%%%%%%%%%
-!SLIDE unclickable showOnlyWhenPresent x=15000 y=12050 scale=5
+!SLIDE x=15000 y=12050 scale=5
 
 #### 話說如果要下載這個網頁檔的話
 
